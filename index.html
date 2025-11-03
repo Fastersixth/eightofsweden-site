@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EightofSweden | Gaming, Cyberpunk & Retro Phone Cases and products</title>
+    <title>EightofSweden | Gaming, Cyberpunk & Retro Phone Cases and Products</title>
 
     <!-- ok meta stuff, dont touch this -->
     <meta
@@ -25,8 +25,8 @@
     <link rel="icon" type="image/png" href="logo.png" />
 
     <style>
-      /* stop looking here, check out the shop instead 😎 */
-      /* visit: https://eightofsweden.etsy.com */
+      /* stop looking here, go shop instead 😎 */
+      /* https://eightofsweden.etsy.com */
 
       body {
         margin: 0;
@@ -35,75 +35,94 @@
         color: #eaeaea;
       }
 
+      /* -------- HEADER -------- */
       header {
         background-color: #434342;
-        padding: 0px 7px;
         display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
+        padding: 10px 0 4px;
       }
 
       header img {
-        height: 80px;
+        height: 65px;
         width: auto;
         object-fit: cover;
         object-position: center;
-        transform: scale(1.9); /* zoom in a bit */
-        filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4));
-        border-radius: 6px;
-        padding-left: 13px;
+        transform: scale(1.4); /* zooma in lite */
+        margin-bottom: 6px;
       }
 
-      /* main nav - kept it simple but cool */
-      nav a {
+      nav.main-nav {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        flex-wrap: wrap;
+        margin-bottom: 4px;
+      }
+
+      nav.main-nav a {
         position: relative;
         color: white;
         text-decoration: none;
-        margin-left: 25px;
         font-weight: 600;
-        padding: 6px 12px;
         text-transform: uppercase;
-        transition: color 0.3s ease, transform 0.3s ease;
+        padding: 5px 10px;
+        transition: all 0.3s ease;
       }
 
-      nav a::before,
-      nav a::after {
+      nav.main-nav a::before,
+      nav.main-nav a::after {
         content: "";
         position: absolute;
         width: 0%;
-        height: 0%;
-        transition: all 0.35s ease;
-        pointer-events: none;
-      }
-
-      nav a::before {
-        left: 0;
-        top: 0;
-        border-top: 2px solid #7fe0d0;
-        border-left: 2px solid #7fe0d0;
-        transition-delay: 0.05s;
-      }
-
-      nav a::after {
-        right: 0;
+        height: 2px;
+        background-color: #7fe0d0;
         bottom: 0;
-        border-bottom: 2px solid #7fe0d0;
-        border-right: 2px solid #7fe0d0;
-        transition-delay: 0.15s;
+        transition: width 0.3s;
       }
 
-      nav a:hover {
+      nav.main-nav a::after {
+        right: 0;
+        left: auto;
+      }
+
+      nav.main-nav a:hover::before,
+      nav.main-nav a:hover::after {
+        width: 50%;
+      }
+
+      nav.main-nav a:hover {
         color: #7fe0d0;
-        transform: translateY(-2px);
+        text-shadow: 0 0 8px rgba(127, 224, 208, 0.7);
       }
 
-      nav a:hover::before,
-      nav a:hover::after {
-        width: 100%;
-        height: 100%;
+      /* -------- SUBNAV (categories) -------- */
+      .subnav {
+        background-color: #1a1a1a;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 8px 10px;
+        gap: 15px;
+        border-top: 1px solid #333;
+        border-bottom: 1px solid #333;
       }
 
-      /* hero section */
+      .subnav a {
+        color: #ccc;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: 0.2s;
+      }
+
+      .subnav a:hover {
+        color: #7fe0d0;
+        text-shadow: 0 0 5px #7fe0d0;
+      }
+
+      /* -------- HERO -------- */
       .hero {
         text-align: center;
         padding: 80px 20px 60px;
@@ -123,20 +142,23 @@
       }
 
       .hero a {
-        background-color: #ff007f;
-        color: white;
+        background-color: #7fe0d0;
+        color: #111;
         padding: 12px 32px;
         border-radius: 30px;
         text-decoration: none;
         font-weight: bold;
-        transition: background 0.2s;
+        transition: 0.3s;
+        box-shadow: 0 0 8px rgba(127, 224, 208, 0.6);
       }
 
       .hero a:hover {
-        background-color: #ff3399;
+        background-color: #64c6b8;
+        box-shadow: 0 0 20px rgba(127, 224, 208, 0.9);
+        transform: scale(1.05);
       }
 
-      /* product cards below */
+      /* -------- PRODUCTS -------- */
       .products {
         max-width: 1100px;
         margin: 0 auto;
@@ -217,6 +239,7 @@
         transform: scale(1.05);
       }
 
+      /* -------- FOOTER -------- */
       footer {
         background: #111;
         text-align: center;
@@ -225,41 +248,76 @@
         font-size: 0.9rem;
       }
 
-      @media (max-width: 600px) {
-        .hero {
-          padding: 60px 10px;
-        }
+      /* -------- COOKIE BANNER -------- */
+      #cookie-banner {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: #111;
+        color: #ccc;
+        text-align: center;
+        padding: 15px 10px;
+        font-size: 0.85rem;
+        border-top: 1px solid #333;
+        z-index: 999;
+        display: none;
+      }
 
+      #cookie-banner button {
+        margin-left: 10px;
+        padding: 6px 18px;
+        background: #7fe0d0;
+        border: none;
+        color: #111;
+        font-weight: bold;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      #cookie-banner button:hover {
+        background: #64c6b8;
+        box-shadow: 0 0 10px rgba(127, 224, 208, 0.8);
+      }
+
+      @media (max-width: 700px) {
+        nav.main-nav,
+        .subnav {
+          flex-wrap: wrap;
+          gap: 10px;
+        }
         .hero h1 {
-          font-size: 1.8rem;
-        }
-
-        .card img {
-          height: 280px;
-        }
-
-        .desc {
-          font-size: 0.85rem;
-        }
-
-        .card a {
-          font-size: 0.8rem;
-          padding: 8px 20px;
+          font-size: 2rem;
         }
       }
     </style>
   </head>
 
-
   <body>
     <header>
       <img src="logo.png" alt="Eight of Sweden logo" />
-      <nav>
+      <nav class="main-nav">
         <a href="#products">Products</a>
         <a href="#about">About</a>
         <a href="https://eightofsweden.etsy.com" target="_blank">Etsy Shop</a>
       </nav>
     </header>
+
+    <nav class="subnav">
+      <a href="#">All</a>
+      <a href="#">On Sale</a>
+      <a href="#">Phone Cases</a>
+      <a href="#">Retro</a>
+      <a href="#">Cyberpunk</a>
+      <a href="#">Notebooks</a>
+      <a href="#">Mugs</a>
+      <a href="#">Mousepads</a>
+      <a href="#">Hats</a>
+      <a href="#">Digital</a>
+      <a href="#">Puzzles</a>
+      <a href="#">Beer Accessories</a>
+    </nav>
 
     <section class="hero">
       <h1>Gaming • Retro • Cyberpunk • Gaming Gear</h1>
@@ -273,80 +331,94 @@
 
     <section class="products" id="products">
       <h2>Featured Products</h2>
+
       <div class="grid">
+        <!-- product cards -->
         <div class="card">
           <img src="https://i.etsystatic.com/43458184/r/il/229be2/7336492405/il_1588xN.7336492405_pr18.jpg" alt="Retro Italian Stripes Phone Case" />
           <h3>Retro Italian Stripes Phone Case</h3>
-           <p class="desc">
-    Minimalist retro design with Italian racing stripes. Perfect for iPhone 16 / 17 / 14 / 15 /13 /12 / 11 / X series and Samsung Galaxy 25 / 24 / 23 / 22
-    matte and glossy finish and slim protection.
-  </p>
+          <p class="desc">
+            Minimalist retro design with Italian racing stripes. Perfect for iPhone 16 / 17 / 14 /
+            15 /13 /12 / 11 / X series and Samsung Galaxy 25 / 24 / 23 / 22 matte and glossy finish
+            and slim protection.
+          </p>
           <a href="https://www.etsy.com/se-en/listing/4350128325/retro-italian-stripes-phone-case-slim" target="_blank">View on Etsy</a>
         </div>
 
         <div class="card">
           <img src="https://i.etsystatic.com/43458184/r/il/51aed8/7288693462/il_1588xN.7288693462_2kht.jpg" alt="Retro Italian Stripes Phone Case (Alt)" />
           <h3>Retro Italian Stripes Phone Case (Alt)</h3>
-           <p class="desc">
-    Minimalist italian retro design, retro design colors. Perfect for iPhone 16 / 17 / 14 / 15 /13 /12 / 11 / X series and Samsung Galaxy 25 / 24 / 23 / 22
-    matte and glossy finish and slim protection.
-  </p>
+          <p class="desc">
+            Minimalist italian retro design, retro design colors. Perfect for iPhone 16 / 17 / 14 /
+            15 /13 /12 / 11 / X series and Samsung Galaxy 25 / 24 / 23 / 22 matte and glossy finish
+            and slim protection.
+          </p>
           <a href="https://www.etsy.com/se-en/listing/4350136065/retro-italian-stripes-phone-case-slim" target="_blank">View on Etsy</a>
         </div>
-      
-      
+
         <div class="card">
           <img src="https://i.etsystatic.com/43458184/r/il/9e60ab/6582623416/il_1588xN.6582623416_iujn.jpg" alt="Cyberpunk 2077 Tough Phone Case" />
           <h3>Cyberpunk 2077 Tough Phone Case</h3>
-           <p class="desc">
-    Cool Gaming and cyberpunk styled phone case, Perfect for iPhone 16 / 17 / 14 / 15 /13 /12 / 11 / X series and Samsung Galaxy 25 / 24 / 23 / 22
-    matte and glossy finish and slim protection.
-  </p>
+          <p class="desc">
+            Cool Gaming and cyberpunk styled phone case, Perfect for iPhone 16 / 17 / 14 / 15 /13
+            /12 / 11 / X series and Samsung Galaxy 25 / 24 / 23 / 22 matte and glossy finish and
+            slim protection.
+          </p>
           <a href="https://www.etsy.com/se-en/listing/1861688103/cyberpunk-2077-tough-phone-case" target="_blank">View on Etsy</a>
         </div>
-
-       
 
         <div class="card">
           <img src="https://i.etsystatic.com/43458184/r/il/50c203/7336147659/il_1588xN.7336147659_5wx6.jpg" alt="Retro Karate Fighting Game Phone Case" />
           <h3>Retro Karate Fighting Game Phone Case</h3>
-          <p class="desc">Cool retro gaming styled phone case, like the old atari games, Perfect for iPhone 16 / 17 / 14 / 15 /13 /12 / 11 / X series and Samsung Galaxy 25 / 24 / 23 / 22
-    matte and glossy finish and slim protection.</p>
+          <p class="desc">
+            Cool retro gaming styled phone case, like the old atari games. Perfect for iPhone 16 /
+            17 / 14 / 15 /13 /12 / 11 / X series and Samsung Galaxy 25 / 24 / 23 / 22 matte and
+            glossy finish and slim protection.
+          </p>
           <a href="https://www.etsy.com/se-en/listing/4382604556/retro-karate-fighting-game-phone-case" target="_blank">View on Etsy</a>
         </div>
 
-      <div class="card">
+        <div class="card">
           <img src="https://i.etsystatic.com/43458184/r/il/5c4884/7179519483/il_1588xN.7179519483_1fh8.jpg" alt="Cyber Punk Red and Black Phone Case" />
           <h3>Cyber Punk Red and Black Tough Phone Case</h3>
-         <p class="desc">Cool Gaming and cyberpunk styled phone case, Perfect cosplay or cyberpunk lovers for iPhone 16 / 17 / 14 / 15 /13 /12 / 11 / X series and Samsung Galaxy 25 / 24 / 23 / 22
-    matte and glossy finish and slim protection.</p>
+          <p class="desc">
+            Cool Gaming and cyberpunk styled phone case, Perfect cosplay or cyberpunk lovers. For
+            iPhone 16 / 17 / 14 / 15 /13 /12 / 11 / X series and Samsung Galaxy 25 / 24 / 23 / 22
+            matte and glossy finish and slim protection.
+          </p>
           <a href="https://www.etsy.com/se-en/listing/4356565554/cyber-punk-red-and-black-tough-phone" target="_blank">View on Etsy</a>
         </div>
-      
-       <div class="card">
+
+        <div class="card">
           <img src="https://i.etsystatic.com/43458184/r/il/a477cc/7163587242/il_1588xN.7163587242_k4li.jpg" alt="Cyberpunk City Spiral Notebook" />
           <h3>Cyberpunk City Spiral Notebook</h3>
-          <p class="desc">Cool and useful Gaming and cyberpunk styled journal or notebook, perfect as a gift for someone who loves gaming.</p>
+          <p class="desc">
+            Cool and useful Gaming and cyberpunk styled journal or notebook, perfect as a gift for
+            someone who loves gaming.
+          </p>
           <a href="https://www.etsy.com/se-en/listing/4362411992/cyberpunk-city-spiral-notebook-ruled" target="_blank">View on Etsy</a>
         </div>
-      
+
         <div class="card">
           <img src="https://i.etsystatic.com/43458184/r/il/39e8b3/7342705104/il_1588xN.7342705104_m80x.jpg" alt="Neon Cyberpunk Journal" />
           <h3>Neon Cyberpunk Journal – Press Play</h3>
-           <p class="desc">Cool and useful Retro Gaming and cyberpunk styled journal or notebook, perfect as a gift for someone who loves gaming.</p>
+          <p class="desc">
+            Cool and useful Retro Gaming and cyberpunk styled journal or notebook, perfect as a gift
+            for someone who loves gaming.
+          </p>
           <a href="https://www.etsy.com/se-en/listing/4396202828/neon-cyberpunk-spiral-journal-press-play" target="_blank">View on Etsy</a>
         </div>
 
         <div class="card">
           <img src="https://i.etsystatic.com/43458184/r/il/1b6a64/7329107602/il_1588xN.7329107602_ay3d.jpg" alt="Gaming Mouse Pad Cyberpunk" />
           <h3>Gaming Mouse Pad – Punk / Cyberpunk</h3>
-           <p class="desc">Cool and useful Gaming and cyberpunk styled mouse pad, fix your gaming setup with this desk mat, perfect as a gift for someone who loves gaming.</p>
+          <p class="desc">
+            Cool and useful Gaming and cyberpunk styled mouse pad, fix your gaming setup with this
+            desk mat, perfect as a gift for someone who loves gaming.
+          </p>
           <a href="https://www.etsy.com/se-en/listing/4394021619/gaming-mouse-pad-with-punk-or-cyberpunk" target="_blank">View on Etsy</a>
         </div>
-
-        
-</div> 
-        
+      </div>
     </section>
 
     <footer id="about">
@@ -355,8 +427,31 @@
         Unique cyberpunk, retro and gaming designs – handcrafted and inspired by creative culture.
       </p>
       <p>
-        <a href="https://eightofsweden.etsy.com" target="_blank" style="color:#ff3399; text-decoration:none;">Shop on Etsy</a>
+        <a
+          href="https://eightofsweden.etsy.com"
+          target="_blank"
+          style="color: #ff3399; text-decoration: none"
+          >Shop on Etsy</a
+        >
       </p>
     </footer>
+
+    <!-- why are you even looking at this code? go shop something cooler -->
+    <div id="cookie-banner">
+      We use cookies to improve your browsing experience.
+      <button id="cookie-accept">OK</button>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const banner = document.getElementById("cookie-banner");
+        const accepted = localStorage.getItem("cookiesAccepted");
+        if (!accepted) banner.style.display = "block";
+        document.getElementById("cookie-accept").addEventListener("click", function () {
+          localStorage.setItem("cookiesAccepted", "true");
+          banner.style.display = "none";
+        });
+      });
+    </script>
   </body>
 </html>
