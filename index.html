@@ -29,16 +29,16 @@
         background-color: #434342;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         padding: 10px 20px;
         position: relative;
-        flex-wrap: wrap;
       }
 
       .left-section {
         display: flex;
         align-items: center;
-        gap: 10px;
+        position: absolute;
+        left: 20px;
       }
 
       .menu-toggle {
@@ -47,71 +47,96 @@
         color: white;
         font-size: 1.8rem;
         cursor: pointer;
+        margin-right: 10px;
       }
 
       header img {
         height: 80px;
         width: auto;
         object-fit: cover;
-        transform: scale(1.3);
+        transform: scale(1.4);
+      }
+
+      .search-bar {
+        flex: 1;
+        max-width: 400px;
+        text-align: center;
+      }
+
+      .search-bar input {
+        width: 100%;
+        padding: 8px 14px;
+        border-radius: 20px;
+        border: none;
+        background: #1e1e1e;
+        color: #fff;
       }
 
       .icons {
         display: flex;
         align-items: center;
         gap: 15px;
+        position: absolute;
+        right: 20px;
       }
 
       .icons a {
         color: white;
         text-decoration: none;
-        font-size: 1.4rem;
+        font-size: 1.3rem;
       }
 
-      /* --- SEARCH BAR --- */
-      .search-bar {
-        width: 100%;
-        background: #1e1e1e;
-        padding: 10px 15px;
-        text-align: center;
-      }
-
-      .search-bar input {
-        width: 100%;
-        max-width: 700px;
-        padding: 10px 16px;
-        border-radius: 25px;
-        border: none;
-        background: #111;
-        color: #fff;
-      }
-
-      /* --- DROPDOWN MENU --- */
+      /* --- NAV MENU --- */
       nav {
+        display: none;
+        flex-direction: column;
         background: #1a1a1a;
-        overflow: hidden;
-        max-height: 0;
-        transition: max-height 0.4s ease-out;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        align-items: center;
+        padding: 10px 0;
       }
 
       nav.active {
-        max-height: 600px;
-        transition: max-height 0.5s ease-in;
+        display: flex;
       }
 
       nav a {
-        display: block;
-        text-align: center;
         color: white;
-        padding: 12px;
         text-decoration: none;
-        border-bottom: 1px solid #333;
+        padding: 8px;
         font-weight: 600;
+        transition: 0.3s;
       }
 
       nav a:hover {
-        background-color: #2b2b2b;
         color: #7fe0d0;
+      }
+
+      /* --- CATEGORY BAR (DESKTOP ONLY) --- */
+      .category-bar {
+        background: #1a1a1a;
+        border-top: 1px solid #333;
+        border-bottom: 1px solid #333;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 10px 20px;
+      }
+
+      .category-bar a {
+        color: #ccc;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: 0.3s;
+      }
+
+      .category-bar a:hover {
+        color: #7fe0d0;
+        text-shadow: 0 0 5px #7fe0d0;
       }
 
       /* --- HERO --- */
@@ -232,6 +257,23 @@
         font-size: 0.9rem;
       }
 
+      /* --- SEARCH RESULT MESSAGE --- */
+      #no-results {
+        text-align: center;
+        display: none;
+        margin-top: 30px;
+      }
+
+      #no-results a {
+        display: inline-block;
+        background-color: #7fe0d0;
+        color: #111;
+        padding: 8px 20px;
+        border-radius: 20px;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
       /* --- COOKIE --- */
       #cookie-banner {
         position: fixed;
@@ -265,33 +307,66 @@
 
       /* --- MOBILE --- */
       @media (max-width: 768px) {
-        header {
-          flex-direction: row;
-          justify-content: space-between;
-          align-items: center;
-          padding: 10px 15px;
-        }
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+  }
 
-        header img {
-          height: 55px;
-          transform: scale(1);
-        }
+  .left-section {
+    position: relative;
+    left: 0;
+    display: flex;
+    align-items: center;
+  }
 
-        .icons {
-          gap: 10px;
-        }
+  .menu-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
 
-        .search-bar {
-          width: 100%;
-          padding: 10px 15px;
-          background: #1e1e1e;
-        }
+  header img {
+    height: 55px;
+    transform: scale(1);
+    margin: 0 auto;
+  }
 
-        .search-bar input {
-          width: 100%;
-          border-radius: 25px;
-          padding: 10px 16px;
-        }
+  .icons {
+    display: flex;
+    position: static;
+    gap: 10px;
+  }
+
+  .search-bar {
+    order: 2;
+    width: 90%;
+    margin: 12px auto 8px;
+  }
+
+  .search-bar input {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 25px;
+    border: none;
+    background: #1e1e1e;
+    color: #fff;
+  }
+
+  nav {
+    position: relative;
+    background: #1a1a1a;
+    width: 100%;
+  }
+
+  .category-bar {
+    display: none;
+  }
+}
+
       }
     </style>
   </head>
@@ -302,21 +377,22 @@
         <button class="menu-toggle">☰</button>
         <img src="logo.png" alt="Eight of Sweden logo" />
       </div>
-
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search..." />
+      </div>
       <div class="icons">
         <a href="#">♡</a>
         <a href="#">🛒</a>
       </div>
+
+      <nav>
+        <a href="#products">Products</a>
+        <a href="#about">About</a>
+        <a href="https://eightofsweden.etsy.com" target="_blank">Etsy Shop</a>
+      </nav>
     </header>
 
-    <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="Search product..." />
-    </div>
-
-    <nav>
-      <a href="#products">Products</a>
-      <a href="#about">About</a>
-      <a href="https://eightofsweden.etsy.com" target="_blank">Etsy Shop</a>
+    <div class="category-bar">
       <a href="#">All</a>
       <a href="#">On Sale</a>
       <a href="#">Phone Cases</a>
@@ -329,7 +405,7 @@
       <a href="#">Digital</a>
       <a href="#">Puzzles</a>
       <a href="#">Beer Accessories</a>
-    </nav>
+    </div>
 
     <section class="hero">
       <h1>Gaming • Retro • Cyberpunk • Gear</h1>
@@ -343,66 +419,67 @@
     <section class="products" id="products">
       <h2>Featured Products</h2>
       <div class="grid" id="productGrid">
+        <!-- alla dina 8 produkter -->
         <div class="card">
           <img src="https://i.etsystatic.com/43458184/r/il/229be2/7336492405/il_1588xN.7336492405_pr18.jpg" alt="Retro Italian Stripes Phone Case" />
           <h3>Retro Italian Stripes Phone Case</h3>
           <p class="desc">Minimalist retro design with Italian racing stripes.</p>
-          <a href="https://www.etsy.com/se-en/listing/4350128325/" target="_blank">View on Etsy</a>
+          <a href="https://www.etsy.com/se-en/listing/4350128325/retro-italian-stripes-phone-case-slim" target="_blank">View on Etsy</a>
         </div>
 
         <div class="card">
           <img src="https://i.etsystatic.com/43458184/r/il/51aed8/7288693462/il_1588xN.7288693462_2kht.jpg" alt="Retro Italian Stripes Phone Case (Alt)" />
           <h3>Retro Italian Stripes Phone Case (Alt)</h3>
           <p class="desc">Minimalist italian retro design, vintage look and slim feel.</p>
-          <a href="https://www.etsy.com/se-en/listing/4350136065/" target="_blank">View on Etsy</a>
+          <a href="https://www.etsy.com/se-en/listing/4350136065/retro-italian-stripes-phone-case-slim" target="_blank">View on Etsy</a>
         </div>
 
         <div class="card">
           <img src="https://i.etsystatic.com/43458184/r/il/9e60ab/6582623416/il_1588xN.6582623416_iujn.jpg" alt="Cyberpunk 2077 Tough Phone Case" />
           <h3>Cyberpunk 2077 Tough Phone Case</h3>
           <p class="desc">Cyberpunk style protective case with matte or glossy finish.</p>
-          <a href="https://www.etsy.com/se-en/listing/1861688103/" target="_blank">View on Etsy</a>
+          <a href="https://www.etsy.com/se-en/listing/1861688103/cyberpunk-2077-tough-phone-case" target="_blank">View on Etsy</a>
         </div>
 
         <div class="card">
           <img src="https://i.etsystatic.com/43458184/r/il/50c203/7336147659/il_1588xN.7336147659_5wx6.jpg" alt="Retro Karate Fighting Game Phone Case" />
           <h3>Retro Karate Fighting Game Phone Case</h3>
           <p class="desc">Old-school fighting game vibe. Perfect for nostalgic gamers.</p>
-          <a href="https://www.etsy.com/se-en/listing/4382604556/" target="_blank">View on Etsy</a>
+          <a href="https://www.etsy.com/se-en/listing/4382604556/retro-karate-fighting-game-phone-case" target="_blank">View on Etsy</a>
         </div>
 
         <div class="card">
           <img src="https://i.etsystatic.com/43458184/r/il/5c4884/7179519483/il_1588xN.7179519483_1fh8.jpg" alt="Cyber Punk Red and Black Phone Case" />
-          <h3>Cyber Punk Red and Black Tough Phone Case</h3>
+          <h3>Cyber Punk Red and Black Tough Phone Case</h>
           <p class="desc">Bold red and black cyberpunk style with extra durability.</p>
-          <a href="https://www.etsy.com/se-en/listing/4356565554/" target="_blank">View on Etsy</a>
+          <a href="https://www.etsy.com/se-en/listing/4356565554/cyber-punk-red-and-black-tough-phone" target="_blank">View on Etsy</a>
         </div>
 
         <div class="card">
           <img src="https://i.etsystatic.com/43458184/r/il/a477cc/7163587242/il_1588xN.7163587242_k4li.jpg" alt="Cyberpunk City Spiral Notebook" />
           <h3>Cyberpunk City Spiral Notebook</h3>
           <p class="desc">Retro futuristic spiral notebook for ideas, art and chaos.</p>
-          <a href="https://www.etsy.com/se-en/listing/4362411992/" target="_blank">View on Etsy</a>
+          <a href="https://www.etsy.com/se-en/listing/4362411992/cyberpunk-city-spiral-notebook-ruled" target="_blank">View on Etsy</a>
         </div>
 
         <div class="card">
           <img src="https://i.etsystatic.com/43458184/r/il/39e8b3/7342705104/il_1588xN.7342705104_m80x.jpg" alt="Neon Cyberpunk Journal" />
           <h3>Neon Cyberpunk Journal – Press Play</h3>
           <p class="desc">Neon glow, dark city mood. The perfect gamer’s journal.</p>
-          <a href="https://www.etsy.com/se-en/listing/4396202828/" target="_blank">View on Etsy</a>
+          <a href="https://www.etsy.com/se-en/listing/4396202828/neon-cyberpunk-spiral-journal-press-play" target="_blank">View on Etsy</a>
         </div>
 
         <div class="card">
           <img src="https://i.etsystatic.com/43458184/r/il/1b6a64/7329107602/il_1588xN.7329107602_ay3d.jpg" alt="Gaming Mouse Pad Cyberpunk" />
           <h3>Gaming Mouse Pad – Punk / Cyberpunk</h3>
           <p class="desc">Massive gaming mouse pad with cyberpunk look and feel.</p>
-          <a href="https://www.etsy.com/se-en/listing/4394021619/" target="_blank">View on Etsy</a>
+          <a href="https://www.etsy.com/se-en/listing/4394021619/gaming-mouse-pad-with-punk-or-cyberpunk" target="_blank">View on Etsy</a>
         </div>
       </div>
 
-      <div id="no-results" style="text-align:center; display:none; margin-top:30px;">
+      <div id="no-results">
         <p>No results found.</p>
-        <a href="https://eightofsweden.etsy.com" target="_blank" style="background:#7fe0d0; color:#111; padding:8px 20px; border-radius:20px; text-decoration:none; font-weight:bold;">Visit Etsy Shop</a>
+        <a href="https://eightofsweden.etsy.com" target="_blank">Visit Etsy Shop</a>
       </div>
     </section>
 
@@ -440,7 +517,7 @@
         const term = this.value.toLowerCase();
         let visible = 0;
 
-        cards.forEach((card) => {
+        cards.forEach(card => {
           const text = card.innerText.toLowerCase();
           if (text.includes(term)) {
             card.style.display = "flex";
