@@ -32,6 +32,7 @@
         justify-content: center;
         padding: 10px 20px;
         position: relative;
+        z-index: 1001;
       }
 
       .left-section {
@@ -97,10 +98,23 @@
         right: 0;
         align-items: center;
         padding: 10px 0;
+        z-index: 1002;
       }
 
       nav.active {
         display: flex;
+        animation: dropdown 0.3s ease forwards;
+      }
+
+      @keyframes dropdown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       nav a {
@@ -115,7 +129,7 @@
         color: #7fe0d0;
       }
 
-      /* --- CATEGORY BAR (DESKTOP ONLY) --- */
+      /* --- CATEGORY BAR (DESKTOP) --- */
       .category-bar {
         background: #1a1a1a;
         border-top: 1px solid #333;
@@ -137,6 +151,32 @@
       .category-bar a:hover {
         color: #7fe0d0;
         text-shadow: 0 0 5px #7fe0d0;
+      }
+
+      /* --- OVERLAY (MOBILE MENU) --- */
+      #overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 1000;
+      }
+
+      #overlay.active {
+        display: block;
+        animation: fadeIn 0.3s ease forwards;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
       }
 
       /* --- HERO --- */
@@ -257,128 +297,55 @@
         font-size: 0.9rem;
       }
 
-      /* --- SEARCH RESULT MESSAGE --- */
-      #no-results {
-        text-align: center;
-        display: none;
-        margin-top: 30px;
-      }
-
-      #no-results a {
-        display: inline-block;
-        background-color: #7fe0d0;
-        color: #111;
-        padding: 8px 20px;
-        border-radius: 20px;
-        text-decoration: none;
-        font-weight: bold;
-      }
-
-      /* --- COOKIE --- */
-      #cookie-banner {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background: #111;
-        color: #ccc;
-        text-align: center;
-        padding: 15px 10px;
-        font-size: 0.85rem;
-        border-top: 1px solid #333;
-        z-index: 999;
-        display: none;
-      }
-
-      #cookie-banner button {
-        margin-left: 10px;
-        padding: 6px 18px;
-        background: #7fe0d0;
-        border: none;
-        color: #111;
-        font-weight: bold;
-        border-radius: 20px;
-        cursor: pointer;
-      }
-
-      #cookie-banner button:hover {
-        background: #64c6b8;
-      }
-
       /* --- MOBILE --- */
       @media (max-width: 768px) {
-  header {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 15px;
-  }
+        header {
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px 15px;
+        }
 
-  .left-section {
-    position: relative;
-    left: 0;
-    display: flex;
-    align-items: center;
-  }
+        header img {
+          height: 55px;
+          transform: scale(1);
+        }
 
-  .menu-toggle {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.8rem;
-    cursor: pointer;
-  }
+        .search-bar {
+          order: 2;
+          width: 100%;
+          background: #1e1e1e;
+          padding: 12px 16px;
+        }
 
-  header img {
-    height: 55px;
-    transform: scale(1);
-    margin: 0 auto;
-  }
+        .search-bar input {
+          width: 100%;
+          padding: 10px 14px;
+          border-radius: 25px;
+          border: none;
+          background: #111;
+          color: #fff;
+        }
 
-  .icons {
-    display: flex;
-    position: static;
-    gap: 10px;
-  }
+        nav {
+          position: relative;
+          width: 100%;
+        }
 
-  .search-bar {
-    order: 2;
-    width: 90%;
-    margin: 12px auto 8px;
-  }
-
-  .search-bar input {
-    width: 100%;
-    padding: 10px 14px;
-    border-radius: 25px;
-    border: none;
-    background: #1e1e1e;
-    color: #fff;
-  }
-
-  nav {
-    position: relative;
-    background: #1a1a1a;
-    width: 100%;
-  }
-
-  .category-bar {
-    display: none;
-  }
-}
-
+        .category-bar {
+          display: none;
+        }
       }
     </style>
   </head>
 
   <body>
+    <div id="overlay"></div>
+
     <header>
       <div class="left-section">
         <button class="menu-toggle">☰</button>
         <img src="logo.png" alt="Eight of Sweden logo" />
-      </div>
-      <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="Search..." />
       </div>
       <div class="icons">
         <a href="#">♡</a>
@@ -389,8 +356,24 @@
         <a href="#products">Products</a>
         <a href="#about">About</a>
         <a href="https://eightofsweden.etsy.com" target="_blank">Etsy Shop</a>
+        <a href="#">All</a>
+        <a href="#">On Sale</a>
+        <a href="#">Phone Cases</a>
+        <a href="#">Retro</a>
+        <a href="#">Cyberpunk</a>
+        <a href="#">Notebooks</a>
+        <a href="#">Mugs</a>
+        <a href="#">Mousepads</a>
+        <a href="#">Hats</a>
+        <a href="#">Digital</a>
+        <a href="#">Puzzles</a>
+        <a href="#">Beer Accessories</a>
       </nav>
     </header>
+
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search..." />
+    </div>
 
     <div class="category-bar">
       <a href="#">All</a>
@@ -416,10 +399,10 @@
       <a href="https://eightofsweden.etsy.com" target="_blank">Visit Etsy Shop</a>
     </section>
 
+  
     <section class="products" id="products">
       <h2>Featured Products</h2>
       <div class="grid" id="productGrid">
-        <!-- alla dina 8 produkter -->
         <div class="card">
           <img src="https://i.etsystatic.com/43458184/r/il/229be2/7336492405/il_1588xN.7336492405_pr18.jpg" alt="Retro Italian Stripes Phone Case" />
           <h3>Retro Italian Stripes Phone Case</h3>
@@ -481,6 +464,11 @@
         <p>No results found.</p>
         <a href="https://eightofsweden.etsy.com" target="_blank">Visit Etsy Shop</a>
       </div>
+
+      <div id="no-results" style="text-align:center; display:none; margin-top:30px;">
+        <p>No results found.</p>
+        <a href="https://eightofsweden.etsy.com" target="_blank">Visit Etsy Shop</a>
+      </div>
     </section>
 
     <footer id="about">
@@ -493,9 +481,18 @@
     </div>
 
     <script>
-      // menu
-      document.querySelector(".menu-toggle").addEventListener("click", () => {
-        document.querySelector("nav").classList.toggle("active");
+      const menuBtn = document.querySelector(".menu-toggle");
+      const nav = document.querySelector("nav");
+      const overlay = document.getElementById("overlay");
+
+      menuBtn.addEventListener("click", () => {
+        const isActive = nav.classList.toggle("active");
+        overlay.classList.toggle("active", isActive);
+      });
+
+      overlay.addEventListener("click", () => {
+        nav.classList.remove("active");
+        overlay.classList.remove("active");
       });
 
       // cookies
@@ -517,7 +514,7 @@
         const term = this.value.toLowerCase();
         let visible = 0;
 
-        cards.forEach(card => {
+        cards.forEach((card) => {
           const text = card.innerText.toLowerCase();
           if (text.includes(term)) {
             card.style.display = "flex";
