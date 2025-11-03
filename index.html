@@ -431,32 +431,39 @@
     </footer>
 
     <div id="cookie-banner">
-      We use cookies to improve your browsing experience.
-      <button id="cookie-accept">OK</button>
-    </div>
+  We use cookies to improve your browsing experience.
+  <button id="cookie-accept">OK</button>
+</div>
 
-    <script>
-      const btn = document.getElementById("menu-btn");
-      const menu = document.getElementById("menu");
-      btn.addEventListener("click", () => {
-        menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-      });
+<script>
+  // simple cookie banner script (don’t overthink this)
+  window.addEventListener("load", function () {
+    const banner = document.getElementById("cookie-banner");
+    const button = document.getElementById("cookie-accept");
 
-      document.addEventListener("click", (e) => {
-        if (!btn.contains(e.target) && !menu.contains(e.target)) {
-          menu.style.display = "none";
-        }
-      });
+    if (!localStorage.getItem("cookiesAccepted")) {
+      banner.style.display = "block";
+    }
 
-      document.addEventListener("DOMContentLoaded", function () {
-        const banner = document.getElementById("cookie-banner");
-        const accepted = localStorage.getItem("cookiesAccepted");
-        if (!accepted) banner.style.display = "block";
-        document.getElementById("cookie-accept").addEventListener("click", function () {
-          localStorage.setItem("cookiesAccepted", "true");
-          banner.style.display = "none";
-        });
-      });
-    </script>
+    button.addEventListener("click", () => {
+      localStorage.setItem("cookiesAccepted", "true");
+      banner.style.display = "none";
+    });
+  });
+
+  // hamburger menu
+  const btn = document.getElementById("menu-btn");
+  const menu = document.getElementById("menu");
+  btn.addEventListener("click", () => {
+    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!btn.contains(e.target) && !menu.contains(e.target)) {
+      menu.style.display = "none";
+    }
+  });
+</script>
+
   </body>
 </html>
