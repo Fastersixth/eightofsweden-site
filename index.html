@@ -123,12 +123,25 @@
         font-size: 1.1rem;
       }
       .card a {
-        display: inline-block;
-        margin-bottom: 20px;
-        color: #ff3399;
-        font-weight: bold;
-        text-decoration: none;
-      }
+  display: inline-block;
+  background: linear-gradient(90deg, #ff007f, #ff3399);
+  color: white;
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 10px 0 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 8px rgba(255, 0, 127, 0.6);
+}
+
+.card a:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 0, 127, 0.9);
+}
+
       footer {
         background: #111;
         text-align: center;
@@ -137,10 +150,28 @@
         font-size: 0.9rem;
       }
       @media (max-width: 600px) {
-        .hero h1 {
-          font-size: 2rem;
-        }
-      }
+  .hero {
+    padding: 60px 10px;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .card img {
+    height: 280px;
+  }
+
+  .desc {
+    font-size: 0.85rem;
+  }
+
+  .card a {
+    font-size: 0.8rem;
+    padding: 8px 20px;
+  }
+}
+
     </style>
   </head>
 
@@ -203,37 +234,37 @@
         <div class="card">
           <img src="https://i.etsystatic.com/43458184/r/il/50c203/7336147659/il_1588xN.7336147659_5wx6.jpg" alt="Retro Karate Fighting Game Phone Case" />
           <h3>Retro Karate Fighting Game Phone Case</h3>
-          Cool retro gaming styled phone case, like the old atari games, Perfect for iPhone 16 / 17 / 14 / 15 /13 /12 / 11 / X series and Samsung Galaxy 25 / 24 / 23 / 22
-    matte and glossy finish and slim protection.
+          <p class="desc">Cool retro gaming styled phone case, like the old atari games, Perfect for iPhone 16 / 17 / 14 / 15 /13 /12 / 11 / X series and Samsung Galaxy 25 / 24 / 23 / 22
+    matte and glossy finish and slim protection.</p>
           <a href="https://www.etsy.com/se-en/listing/4382604556/retro-karate-fighting-game-phone-case" target="_blank">View on Etsy</a>
         </div>
 
       <div class="card">
           <img src="https://i.etsystatic.com/43458184/r/il/5c4884/7179519483/il_1588xN.7179519483_1fh8.jpg" alt="Cyber Punk Red and Black Phone Case" />
           <h3>Cyber Punk Red and Black Tough Phone Case</h3>
-        Cool Gaming and cyberpunk styled phone case, Perfect cosplay or cyberpunk lovers for iPhone 16 / 17 / 14 / 15 /13 /12 / 11 / X series and Samsung Galaxy 25 / 24 / 23 / 22
-    matte and glossy finish and slim protection.
+         <p class="desc">Cool Gaming and cyberpunk styled phone case, Perfect cosplay or cyberpunk lovers for iPhone 16 / 17 / 14 / 15 /13 /12 / 11 / X series and Samsung Galaxy 25 / 24 / 23 / 22
+    matte and glossy finish and slim protection.</p>
           <a href="https://www.etsy.com/se-en/listing/4356565554/cyber-punk-red-and-black-tough-phone" target="_blank">View on Etsy</a>
         </div>
       
        <div class="card">
           <img src="https://i.etsystatic.com/43458184/r/il/a477cc/7163587242/il_1588xN.7163587242_k4li.jpg" alt="Cyberpunk City Spiral Notebook" />
           <h3>Cyberpunk City Spiral Notebook</h3>
-         Cool and useful Gaming and cyberpunk styled journal or notebook, perfect as a gift for someone who loves gaming.
+          <p class="desc">Cool and useful Gaming and cyberpunk styled journal or notebook, perfect as a gift for someone who loves gaming.</p>
           <a href="https://www.etsy.com/se-en/listing/4362411992/cyberpunk-city-spiral-notebook-ruled" target="_blank">View on Etsy</a>
         </div>
       
         <div class="card">
           <img src="https://i.etsystatic.com/43458184/r/il/39e8b3/7342705104/il_1588xN.7342705104_m80x.jpg" alt="Neon Cyberpunk Journal" />
           <h3>Neon Cyberpunk Journal – Press Play</h3>
-          Cool and useful Retro Gaming and cyberpunk styled journal or notebook, perfect as a gift for someone who loves gaming.
+           <p class="desc">Cool and useful Retro Gaming and cyberpunk styled journal or notebook, perfect as a gift for someone who loves gaming.</p>
           <a href="https://www.etsy.com/se-en/listing/4396202828/neon-cyberpunk-spiral-journal-press-play" target="_blank">View on Etsy</a>
         </div>
 
         <div class="card">
           <img src="https://i.etsystatic.com/43458184/r/il/1b6a64/7329107602/il_1588xN.7329107602_ay3d.jpg" alt="Gaming Mouse Pad Cyberpunk" />
           <h3>Gaming Mouse Pad – Punk / Cyberpunk</h3>
-          Cool and useful Gaming and cyberpunk styled mouse pad, fix your gaming setup with this desk mat, perfect as a gift for someone who loves gaming.
+           <p class="desc">Cool and useful Gaming and cyberpunk styled mouse pad, fix your gaming setup with this desk mat, perfect as a gift for someone who loves gaming.</p>
           <a href="https://www.etsy.com/se-en/listing/4394021619/gaming-mouse-pad-with-punk-or-cyberpunk" target="_blank">View on Etsy</a>
         </div>
 
