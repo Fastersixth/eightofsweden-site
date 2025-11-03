@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EightofSweden | Gaming, Cyberpunk & Retro Phone Cases and Products</title>
 
-    <!-- stop spying here... go look at the products instead 😎 -->
     <meta
       name="description"
       content="Explore Eight of Sweden – unique cyberpunk, retro, and gaming-inspired phone cases, journals, and accessories. Designed in Sweden for creative minds."
@@ -30,7 +29,7 @@
         background-color: #434342;
         display: flex;
         align-items: center;
-        justify-content: center; /* centrera innehållet */
+        justify-content: center;
         padding: 10px 20px;
         position: relative;
       }
@@ -55,7 +54,7 @@
         height: 80px;
         width: auto;
         object-fit: cover;
-        transform: scale(1.4);
+        transform: scale(1.9);
       }
 
       .search-bar {
@@ -87,6 +86,7 @@
         font-size: 1.3rem;
       }
 
+      /* --- NAV MENU --- */
       nav {
         display: none;
         flex-direction: column;
@@ -113,6 +113,30 @@
 
       nav a:hover {
         color: #7fe0d0;
+      }
+
+      /* --- CATEGORY BAR (DESKTOP ONLY) --- */
+      .category-bar {
+        background: #1a1a1a;
+        border-top: 1px solid #333;
+        border-bottom: 1px solid #333;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 10px 20px;
+      }
+
+      .category-bar a {
+        color: #ccc;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: 0.3s;
+      }
+
+      .category-bar a:hover {
+        color: #7fe0d0;
+        text-shadow: 0 0 5px #7fe0d0;
       }
 
       /* --- HERO --- */
@@ -302,11 +326,16 @@
           background: #1a1a1a;
           width: 100%;
         }
+
+        .category-bar {
+          display: none;
+        }
       }
     </style>
   </head>
 
   <body>
+    <!-- HEADER -->
     <header>
       <div class="left-section">
         <button class="menu-toggle">☰</button>
@@ -327,6 +356,23 @@
       </nav>
     </header>
 
+    <!-- CATEGORY BAR -->
+    <div class="category-bar">
+      <a href="#">All</a>
+      <a href="#">On Sale</a>
+      <a href="#">Phone Cases</a>
+      <a href="#">Retro</a>
+      <a href="#">Cyberpunk</a>
+      <a href="#">Notebooks</a>
+      <a href="#">Mugs</a>
+      <a href="#">Mousepads</a>
+      <a href="#">Hats</a>
+      <a href="#">Digital</a>
+      <a href="#">Puzzles</a>
+      <a href="#">Beer Accessories</a>
+    </div>
+
+    <!-- HERO -->
     <section class="hero">
       <h1>Gaming • Retro • Cyberpunk • Gear</h1>
       <p>
@@ -336,77 +382,105 @@
       <a href="https://eightofsweden.etsy.com" target="_blank">Visit Etsy Shop</a>
     </section>
 
+    <!-- PRODUCTS -->
     <section class="products" id="products">
       <h2>Featured Products</h2>
       <div class="grid">
-        <!-- alla dina 8 produkter -->
         <div class="card">
           <img src="https://i.etsystatic.com/43458184/r/il/229be2/7336492405/il_1588xN.7336492405_pr18.jpg" alt="Retro Italian Stripes Phone Case" />
           <h3>Retro Italian Stripes Phone Case</h3>
-          <p class="desc">Minimalist retro design with Italian racing stripes. Perfect for iPhone and Samsung models.</p>
+          <p class="desc">
+            Minimalist retro design with Italian racing stripes. Perfect for iPhone and Samsung models.
+          </p>
           <a href="https://www.etsy.com/se-en/listing/4350128325/retro-italian-stripes-phone-case-slim" target="_blank">View on Etsy</a>
         </div>
+
         <div class="card">
           <img src="https://i.etsystatic.com/43458184/r/il/51aed8/7288693462/il_1588xN.7288693462_2kht.jpg" alt="Retro Italian Stripes Phone Case (Alt)" />
           <h3>Retro Italian Stripes Phone Case (Alt)</h3>
-          <p class="desc">Minimalist italian retro design, vintage look and slim feel.</p>
+          <p class="desc">
+            Minimalist italian retro design, vintage look and slim feel.
+          </p>
           <a href="https://www.etsy.com/se-en/listing/4350136065/retro-italian-stripes-phone-case-slim" target="_blank">View on Etsy</a>
         </div>
+
         <div class="card">
           <img src="https://i.etsystatic.com/43458184/r/il/9e60ab/6582623416/il_1588xN.6582623416_iujn.jpg" alt="Cyberpunk 2077 Tough Phone Case" />
           <h3>Cyberpunk 2077 Tough Phone Case</h3>
-          <p class="desc">Cyberpunk style protective case with matte or glossy finish.</p>
+          <p class="desc">
+            Cyberpunk style protective case with matte or glossy finish.
+          </p>
           <a href="https://www.etsy.com/se-en/listing/1861688103/cyberpunk-2077-tough-phone-case" target="_blank">View on Etsy</a>
         </div>
+
         <div class="card">
           <img src="https://i.etsystatic.com/43458184/r/il/50c203/7336147659/il_1588xN.7336147659_5wx6.jpg" alt="Retro Karate Fighting Game Phone Case" />
           <h3>Retro Karate Fighting Game Phone Case</h3>
-          <p class="desc">Old-school fighting game vibe. Perfect for nostalgic gamers.</p>
+          <p class="desc">
+            Old-school fighting game vibe. Perfect for nostalgic gamers.
+          </p>
           <a href="https://www.etsy.com/se-en/listing/4382604556/retro-karate-fighting-game-phone-case" target="_blank">View on Etsy</a>
         </div>
+
         <div class="card">
           <img src="https://i.etsystatic.com/43458184/r/il/5c4884/7179519483/il_1588xN.7179519483_1fh8.jpg" alt="Cyber Punk Red and Black Phone Case" />
           <h3>Cyber Punk Red and Black Tough Phone Case</h3>
-          <p class="desc">Bold red and black cyberpunk style with extra durability.</p>
+          <p class="desc">
+            Bold red and black cyberpunk style with extra durability.
+          </p>
           <a href="https://www.etsy.com/se-en/listing/4356565554/cyber-punk-red-and-black-tough-phone" target="_blank">View on Etsy</a>
         </div>
+
         <div class="card">
           <img src="https://i.etsystatic.com/43458184/r/il/a477cc/7163587242/il_1588xN.7163587242_k4li.jpg" alt="Cyberpunk City Spiral Notebook" />
           <h3>Cyberpunk City Spiral Notebook</h3>
-          <p class="desc">Retro futuristic spiral notebook for ideas, art and chaos.</p>
+          <p class="desc">
+            Retro futuristic spiral notebook for ideas, art and chaos.
+          </p>
           <a href="https://www.etsy.com/se-en/listing/4362411992/cyberpunk-city-spiral-notebook-ruled" target="_blank">View on Etsy</a>
         </div>
+
         <div class="card">
           <img src="https://i.etsystatic.com/43458184/r/il/39e8b3/7342705104/il_1588xN.7342705104_m80x.jpg" alt="Neon Cyberpunk Journal" />
           <h3>Neon Cyberpunk Journal – Press Play</h3>
-          <p class="desc">Neon glow, dark city mood. The perfect gamer’s journal.</p>
+          <p class="desc">
+            Neon glow, dark city mood. The perfect gamer’s journal.
+          </p>
           <a href="https://www.etsy.com/se-en/listing/4396202828/neon-cyberpunk-spiral-journal-press-play" target="_blank">View on Etsy</a>
         </div>
+
         <div class="card">
           <img src="https://i.etsystatic.com/43458184/r/il/1b6a64/7329107602/il_1588xN.7329107602_ay3d.jpg" alt="Gaming Mouse Pad Cyberpunk" />
           <h3>Gaming Mouse Pad – Punk / Cyberpunk</h3>
-          <p class="desc">Massive gaming mouse pad with cyberpunk look and feel.</p>
+          <p class="desc">
+            Massive gaming mouse pad with cyberpunk look and feel.
+          </p>
           <a href="https://www.etsy.com/se-en/listing/4394021619/gaming-mouse-pad-with-punk-or-cyberpunk" target="_blank">View on Etsy</a>
         </div>
       </div>
     </section>
 
+    <!-- FOOTER -->
     <footer id="about">
-      <p>© 2025 Eight of Sweden. All rights reserved.<br />Unique cyberpunk, retro and gaming designs – handcrafted and inspired by creative culture.</p>
+      <p>
+        © 2025 Eight of Sweden. All rights reserved.<br />
+        Unique cyberpunk, retro and gaming designs – handcrafted and inspired by creative culture.
+      </p>
     </footer>
 
+    <!-- COOKIE BANNER -->
     <div id="cookie-banner">
       We use cookies to improve your browsing experience. You can accept or leave this site.
       <button id="cookie-accept">Accept</button>
     </div>
 
     <script>
-      // toggle menu
+      // toggle hamburger menu
       document.querySelector(".menu-toggle").addEventListener("click", () => {
         document.querySelector("nav").classList.toggle("active");
       });
 
-      // cookie ok thing
+      // cookie banner logic
       document.addEventListener("DOMContentLoaded", function () {
         const banner = document.getElementById("cookie-banner");
         const accepted = localStorage.getItem("cookiesAccepted");
